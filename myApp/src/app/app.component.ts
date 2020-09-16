@@ -3,21 +3,22 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <h1 (click)="clickHandler($event)">Hello World!!</h1>
-    <input type="text" value="" (keydown.enter)="inputHandler($event)">
+    <button (click)="toggle()">Toggle</button>
+    <h1 *ngIf="visible">Hello World!!</h1>
+    <li
+    [hidden]="!visible"
+    *ngFor="let user of users">
+      {{user}}
+    </li>
   `,
   styles: [`
 
   `]
 })
 export class AppComponent {
-  title = 'myApp';
-  clickHandler(event:MouseEvent) {
-    console.log('click', event);
-  }
-  inputHandler(event: KeyboardEvent) {
-    const target = event.target as HTMLInputElement;
-    console.log('press', target.value);
-
+  visible = true;
+  users = ['Mattia', 'Paolo', 'Bene'];
+  toggle() {
+    this.visible = !this.visible;
   }
 }
