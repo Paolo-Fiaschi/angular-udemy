@@ -14,7 +14,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "pf",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
