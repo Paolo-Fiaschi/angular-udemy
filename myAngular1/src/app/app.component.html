@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>{{title}}</h1>
+    </div>
+    <div class="col-12">
+      <ul>
+        <li>{{studente.nome}}</li>
+        <li>{{studente.eta}}</li>
+        <li *ngIf="studente.presente">Presente</li>
+        <li *ngIf="!studente.presente">Assente</li>
+        <button class="btn btn-primary" (click)="change()">change</button>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
