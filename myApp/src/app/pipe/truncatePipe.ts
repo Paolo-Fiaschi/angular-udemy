@@ -8,7 +8,7 @@ export class TruncatePipe implements PipeTransform {
     let result = value;
     if (value) {
       if (value.length > args) {
-        result = value.substring(0, args) + "...";
+        result = value.substring(0, args) + '...';
       }else{
         result = value;
       }
