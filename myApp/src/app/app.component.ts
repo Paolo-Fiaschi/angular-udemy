@@ -4,24 +4,26 @@ import { User } from './model/users';
 @Component({
   selector: 'app-root',
   template: `
-    <button (click)="goto('one')">ONE</button>
-    <button (click)="goto('two')">TWO</button>
-    <button (click)="goto('three')">THREE</button>
-    <hr>
-    <div [ngSwitch]= "section">
-      <div *ngSwitchDefault>Lorem 1</div>
-      <div *ngSwitchCase="'two'">Lorem 2</div>
-      <div *ngSwitchCase="'three'">Lorem 3</div>
-    </div>
+    <li
+      [class.male]="user.gender === 'M'"
+      [class.female]="user.gender === 'F'"
+      [class.me]="user.name === 'Paolo'"
+      *ngFor="let user of users">
+      {{ user.name }}
+    </li>
   `,
   styles: [`
-
+    .male {background-color: black; color: white}
+    .female {background-color: pink; color: black}
+    .me{font-size: 30px}
   `]
 })
 export class AppComponent {
-  section: string;
-  goto(value: string){
-    this.section = value;
-  }
+  users = [
+    {id: 1, name: 'Paolo', gender: 'M'},
+    {id: 2, name: 'Giorgia', gender: 'F'},
+    {id: 3, name: 'Mattia', gender: 'M'},
+    {id: 4, name: 'Bene', gender: 'F'},
+  ];
 }
 
