@@ -5,28 +5,37 @@ import { User } from './model/users';
   selector: 'app-root',
   template: `
     <div class="container">
-      <div class="card">
-        <div class="card-header">
-          Titolo
+      <div class="row">
+        <div class="col">
+          <input class="form-control" type="text" name="" placeholder="Add user..."
+            #inputRef
+            (keydown.enter)="add(inputRef)"
+          >
         </div>
-        <div class="card-body">
-          Titolo body
+        <div class="col">
+          <button class="btn btn-warning" (click)="add(inputRef)">ADD</button>
+        </div>
+        <div class="col-12">
+          <li *ngFor="let user of users">
+            {{ user }}
+          </li>
         </div>
       </div>
-      <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-    </div>
+
+      </div>
   `,
   styles: [`
-    .male {background-color: blue; color: white}
-    .female {background-color: pink; color: black}
   `]
 })
 export class AppComponent {
+  add(input: HTMLInputElement){
+    this.users.push(input.value);
+    input.value = '';
+    input.focus();
+
+  }
   users = [
-    {id: 1, name: 'Paolo', age: 32, gender: 'M'},
-    {id: 2, name: 'Giorgia', age: 23, gender: 'F'},
-    {id: 3, name: 'Mattia', age: 12, gender: 'M'},
-    {id: 4, name: 'Bene', age: 23, gender: 'F'},
+    'Paolo', 'Bene'
   ];
 }
 
