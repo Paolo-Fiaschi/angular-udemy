@@ -3,26 +3,20 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   template: `
-    <!-- <pre>{{users | json}}</pre> -->
-    <li *ngFor="let user of users">
-      {{user.id}} - {{user.name}}
-    </li>
+    <div *ngIf="!users; else success">LOADING</div>
+    <ng-template #success><pre>{{users | json}}</pre></ng-template>
   `,
   styles: [`
 
   `]
 })
 export class AppComponent {
-  users: User[];
-  constructor(private http: HttpClient) {
-    this.http.get<User[]>('https://jsonplaceholder.typicode.com/users')
-      .subscribe(res => {
-        this.users = res;
-      });
+  users: any[];
+  constructor(private http: HttpClient){
+    setTimeout(() => {
+      http.get<any>('https://jsonplaceholder.typicode.com/users')
+        .subscribe(res => this.users = res);
+      }, 2000);
   }
 }
 
-interface User{
-  id: number;
-  name: string;
-}
