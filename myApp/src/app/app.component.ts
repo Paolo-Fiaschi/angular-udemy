@@ -1,22 +1,32 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { User } from './model/users';
 @Component({
   selector: 'app-root',
   template: `
-    <div *ngIf="!users; else success">LOADING</div>
-    <ng-template #success><pre>{{users | json}}</pre></ng-template>
+    <div *ngFor="let user of users; let i = index">
+      {{i + 1}}.{{user.name}} - {{user.address.city}}
+      <button (click)="delete(user)">Delete</button>
+    </div>
   `,
   styles: [`
 
   `]
 })
 export class AppComponent {
-  users: any[];
+  users: User[];
   constructor(private http: HttpClient){
-    setTimeout(() => {
-      http.get<any>('https://jsonplaceholder.typicode.com/users')
-        .subscribe(res => this.users = res);
-      }, 2000);
+    http.get<User[]>('https://jsonplaceholder.typicode.com/users')
+      .subscribe(res => this.users = res);
+  }
+  delete(user: User){
+    // togliendo elemento dalla collezione
+    // const index = this.users.findIndex(item => item.id === user.id);
+    // this.users.splice(index, 1);
+
+    // non si toglie l'elementoi dalla collezione ma non si fa vedere
+    this.users = this.users.filter(item => item.id !== user.id);
+
   }
 }
 
