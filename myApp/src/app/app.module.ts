@@ -5,6 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './components/hello.component';
 import { TruncatePipe } from './pipe/truncatePipe';
+import { Utility} from './services/utility';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 @NgModule({
   declarations: [
@@ -14,9 +18,10 @@ import { TruncatePipe } from './pipe/truncatePipe';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [Utility],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
