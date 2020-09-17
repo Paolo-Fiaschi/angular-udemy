@@ -5,17 +5,17 @@ import { User } from './model/users';
   selector: 'app-root',
   template: `
     <li
-      [class.male]="user.gender === 'M'"
-      [class.female]="user.gender === 'F'"
-      [class.me]="user.name === 'Paolo'"
+      [ngClass]="{
+        'male': user.gender === 'M',
+        'female': user.gender === 'F'
+      }"
       *ngFor="let user of users">
       {{ user.name }}
     </li>
   `,
   styles: [`
-    .male {background-color: black; color: white}
+    .male {background-color: blue; color: white}
     .female {background-color: pink; color: black}
-    .me{font-size: 30px}
   `]
 })
 export class AppComponent {
