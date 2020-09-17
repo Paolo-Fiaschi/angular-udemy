@@ -4,11 +4,17 @@ import { User } from './model/users';
 @Component({
   selector: 'app-root',
   template: `
-    <li
-      [ngStyle]="getStyle(user)"
-      *ngFor="let user of users">
-      {{ user.name }}
-    </li>
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          Titolo
+        </div>
+        <div class="card-body">
+          Titolo body
+        </div>
+      </div>
+      <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+    </div>
   `,
   styles: [`
     .male {background-color: blue; color: white}
@@ -16,13 +22,6 @@ import { User } from './model/users';
   `]
 })
 export class AppComponent {
-  getStyle(user){
-    return {
-      backgroundColor: 'grey',
-      color: user.gender === 'M' ? 'blue' : 'pink',
-      fontSize: user.age + 'px'
-    }
-  }
   users = [
     {id: 1, name: 'Paolo', age: 32, gender: 'M'},
     {id: 2, name: 'Giorgia', age: 23, gender: 'F'},
