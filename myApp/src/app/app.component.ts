@@ -5,9 +5,7 @@ import { User } from './model/users';
   selector: 'app-root',
   template: `
     <li
-    [style.backgroundColor]="user.gender === 'M' ? 'blue':'pink'"
-    [style.color]="user.gender === 'M' ? 'white':'black'"
-    [style.fontSize.px]="user.age"
+      [ngStyle]="getStyle(user)"
       *ngFor="let user of users">
       {{ user.name }}
     </li>
@@ -18,6 +16,13 @@ import { User } from './model/users';
   `]
 })
 export class AppComponent {
+  getStyle(user){
+    return {
+      backgroundColor: 'grey',
+      color: user.gender === 'M' ? 'blue' : 'pink',
+      fontSize: user.age + 'px'
+    }
+  }
   users = [
     {id: 1, name: 'Paolo', age: 32, gender: 'M'},
     {id: 2, name: 'Giorgia', age: 23, gender: 'F'},
