@@ -7,9 +7,9 @@ import { from } from 'rxjs';
   selector: 'app-root',
   template: `
     <div class="container">
-      <pre>{{f.dirty}}</pre>
-      <pre>{{f.valid}}</pre>
-      <pre>{{f.touched}}</pre>
+      <!-- <pre>{{inputName.errors | json}}</pre> -->
+      <div *ngIf="inputName.errors?.minlength">Troppo corto - mancano ancora {{inputName.errors?.minlength.requiredLength - inputName.errors?.minlength.actualLength}} caratteri</div>
+      <div *ngIf="inputName.errors?.required">Campo obbligatorio *</div>
       <form #f ="ngForm" (submit)="add(f)">
         <input class="form-control"
         #inputName ="ngModel"
