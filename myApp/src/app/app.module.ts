@@ -7,6 +7,7 @@ import { HelloComponent } from './components/hello.component';
 import { TruncatePipe } from './pipe/truncatePipe';
 import { Utility} from './services/utility';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [Utility],
   bootstrap: [AppComponent]

@@ -1,41 +1,61 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './model/users';
+import { NgForm } from '@angular/forms';
+import { from } from 'rxjs';
 @Component({
   selector: 'app-root',
   template: `
     <div class="container">
-      <div class="row">
-        <div class="col">
-          <input class="form-control" type="text" name="" placeholder="Add user..."
-            #inputRef
-            (keydown.enter)="add(inputRef)"
-          >
-        </div>
-        <div class="col">
-          <button class="btn btn-warning" (click)="add(inputRef)">ADD</button>
-        </div>
-        <div class="col-12">
-          <li *ngFor="let user of users">
-            {{ user }}
-          </li>
-        </div>
-      </div>
-
-      </div>
+      <pre>{{f.dirty}}</pre>
+      <pre>{{f.valid}}</pre>
+      <pre>{{f.touched}}</pre>
+      <form #f ="ngForm" (submit)="add(f)">
+        <input class="form-control"
+        #inputName ="ngModel"
+        type="text"
+        name="name"
+        placeholder="Add user..."
+        minlength="3"
+        [ngClass]="{'error': inputName.invalid && inputName.touched}"
+        [ngModel]="user?.name"
+        required
+        >
+        <input class="form-control"
+        #inputAge ="ngModel"
+        type="number"
+        name="age"
+        placeholder="Add age user..."
+        [ngClass]="{'error': inputAge.invalid && inputAge.dirty}"
+        [ngModel]="user?.age"
+        required
+        >
+        <button [disabled]="f.invalid" type="submit" class="btn btn-primary">
+          Add
+        </button>
+      </form>
+      <li
+      *ngFor="let user of users"
+      (click)="setActive(user)"
+      [style.backgroundColor]= "user.color"
+      >
+        {{user.name}} - {{user.age}} anni
+      </li>
+    </div>
   `,
   styles: [`
+    .error {
+      border: 1px solid red;
+    }
   `]
 })
 export class AppComponent {
-  add(input: HTMLInputElement){
-    this.users.push(input.value);
-    input.value = '';
-    input.focus();
+  user: User;
+  users = [];
 
+  add(form: NgForm){
+    this.users.push(form.value);
+    form.reset();
   }
-  users = [
-    'Paolo', 'Bene'
-  ];
 }
 
