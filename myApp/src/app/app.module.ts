@@ -8,6 +8,7 @@ import { TruncatePipe } from './pipe/truncatePipe';
 import { Utility} from './services/utility';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CardComponent } from './shared/card/card.component';
 
 
 
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     HelloComponent,
     TruncatePipe,
+    CardComponent,
   ],
   imports: [
     BrowserModule,

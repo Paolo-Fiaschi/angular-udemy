@@ -6,56 +6,35 @@ import { from } from 'rxjs';
 @Component({
   selector: 'app-root',
   template: `
-    <div class="container">
-      <!-- <pre>{{inputName.errors | json}}</pre> -->
-      <div *ngIf="inputName.errors?.minlength">Troppo corto - mancano ancora {{inputName.errors?.minlength.requiredLength - inputName.errors?.minlength.actualLength}} caratteri</div>
-      <div *ngIf="inputName.errors?.required">Campo obbligatorio *</div>
-      <form #f ="ngForm" (submit)="add(f)">
-        <input class="form-control"
-        #inputName ="ngModel"
-        type="text"
-        name="name"
-        placeholder="Add user..."
-        minlength="3"
-        [ngClass]="{'error': inputName.invalid && inputName.touched}"
-        [ngModel]="user?.name"
-        required
-        >
-        <input class="form-control"
-        #inputAge ="ngModel"
-        type="number"
-        name="age"
-        placeholder="Add age user..."
-        [ngClass]="{'error': inputAge.invalid && inputAge.dirty}"
-        [ngModel]="user?.age"
-        required
-        >
-        <button [disabled]="f.invalid" type="submit" class="btn btn-primary">
-          Add
-        </button>
-      </form>
-      <li
-      *ngFor="let user of users"
-      (click)="setActive(user)"
-      [style.backgroundColor]= "user.color"
-      >
-        {{user.name}} - {{user.age}} anni
-      </li>
-    </div>
+      <div class="container mt-3">
+        <app-card title="Profile">
+          Lorem Ispsum d
+        </app-card>
+        <app-card title="Form">
+          <input class="form-group" type="text" name="">
+          <input class="form-group" type="text" name="">
+          <input class="form-group" type="text" name="">
+          <input class="form-group" type="text" name="">
+        </app-card>
+        <app-card>
+          <div class="row">
+            <div class="col">
+              <app-card title="1">
+                <input class="form-control" type="text" name="">
+              </app-card>
+            </div>
+            <div class="col">
+              <app-card title="2">
+                Lorem ipsum dolor sit amet, consectetur adip
+              </app-card>
+            </div>
+          </div>
+        </app-card>
+      </div>
   `,
   styles: [`
-    .error {
-      border: 1px solid red;
-    }
   `]
 })
 export class AppComponent {
-  user: User;
-  users = [];
-
-  add(form: NgForm){
-    this.users.push(form.value);
-    form.reset();
-  }
 }
 
