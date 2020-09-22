@@ -9,6 +9,7 @@ import { Utility} from './services/utility';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CardComponent } from './shared/card/card.component';
+import { TabbarComponent } from './shared/tabbar.component';
 
 
 
@@ -18,6 +19,7 @@ import { CardComponent } from './shared/card/card.component';
     HelloComponent,
     TruncatePipe,
     CardComponent,
+    TabbarComponent,
   ],
   imports: [
     BrowserModule,
