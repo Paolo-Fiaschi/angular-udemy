@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CardComponent } from './shared/card/card.component';
 import { TabbarComponent } from './shared/tabbar.component';
+import { MeteoComponent } from './components/meteo.component';
 
 
 
@@ -20,6 +21,7 @@ import { TabbarComponent } from './shared/tabbar.component';
     TruncatePipe,
     CardComponent,
     TabbarComponent,
+    MeteoComponent,
   ],
   imports: [
     BrowserModule,
