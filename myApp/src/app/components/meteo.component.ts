@@ -1,4 +1,4 @@
-import { Component, Input,ChangeDetectionStrategy, ChangeDetectorRef, OnChanges, SimpleChanges, OnInit } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({

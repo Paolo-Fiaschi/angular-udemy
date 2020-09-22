@@ -7,21 +7,12 @@ import {TabbarItem} from './model/tabbar';
 @Component({
   selector: 'app-root',
   template: `
-    <app-meteo [city]="city"></app-meteo>
-    <form #f='ngForm' (submit)="changeCity(f)">
-      <input class="form-control" type="text" name="city" [ngModel]="city.value">
-      <button type="submit">CHANGE</button>
-    </form>
+    <app-nav></app-nav>
+    <router-outlet></router-outlet>
   `,
   styles: [`
   `]
 })
 export class AppComponent {
-  // city = 'Londra';
-  city = {value: 'Londra'};
-  changeCity(form: NgForm): void{
-    // this.city.value = form.value.city;
-    this.city = {value: form.value.city};
-  }
 }
 
