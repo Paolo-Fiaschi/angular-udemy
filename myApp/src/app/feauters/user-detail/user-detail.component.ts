@@ -38,7 +38,6 @@ export class UserDetailComponent implements OnInit {
         this.id = +params.id;
         this.http.get(`https://jsonplaceholder.typicode.com/users/${this.id}`).
         subscribe(res => {
-          console.log(res);
           this.user = res;
         });
       })
