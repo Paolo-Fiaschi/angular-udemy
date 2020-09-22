@@ -18,7 +18,7 @@ import { Component, OnInit } from '@angular/core';
             <a class="nav-link" routerLink="contact" (click)="isCollapsed = !isCollapsed"  routerLinkActive="active">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="gallery" (click)="isCollapsed = !isCollapsed" routerLinkActive="active">Gallery</a>
+            <a class="nav-link" routerLink="users" (click)="isCollapsed = !isCollapsed" routerLinkActive="active">Users</a>
           </li>
         </ul>
       </div>
